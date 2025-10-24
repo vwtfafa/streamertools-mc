@@ -1,0 +1,23 @@
+{
+  "title.streamertools.config": "Streamer Tools Configuration",
+  "category.streamertools.main": "Streamer Tools",
+  "category.streamertools.twitch": "Twitch Settings",
+  "category.streamertools.commands": "Chat Commands",
+  "category.streamertools.alerts": "Alerts",
+  "option.streamertools.twitch.enabled": "Enable Twitch Integration",
+  "option.streamertools.twitch.username": "Twitch Username",
+  "option.streamertools.twitch.oauth": "OAuth Token",
+  "option.streamertools.twitch.channel": "Channel Name",
+  "option.streamertools.twitch.show_chat": "Show Chat In-Game",
+  "option.streamertools.commands.enabled": "Enable Chat Commands",
+  "option.streamertools.commands.cooldown": "Command Cooldown (seconds)",
+  "option.streamertools.commands.require_follow": "Require Follow",
+  "option.streamertools.commands.require_sub": "Require Subscription",
+  "option.streamertools.alerts.enabled": "Enable Alerts",
+  "option.streamertools.alerts.sounds": "Play Sounds",
+  "option.streamertools.alerts.volume": "Alert Volume",
+  "key.streamertools.config": "Open Config",
+  "key.streamertools.toggle_chat": "Toggle Chat Overlay",
+  "message.streamertools.chat_shown": "Chat overlay shown",
+  "message.streamertools.chat_hidden": "Chat overlay hidden"
+}

@@ -1,35 +1,47 @@
 {
   "schemaVersion": 1,
   "id": "streamertools",
-  "version": "${version}",
+  "version": "1.0.0",
   "name": "Streamer Tools",
-  "description": "",
-  "authors": [],
-  "contact": {},
+  "description": "A Minecraft mod that integrates Twitch chat with in-game events and overlays for streamers.",
+  "authors": ["vwtfafa"],
+  "contact": {
+    "sources": "https://github.com/vwtfafa/streamertools",
+    "issues": "https://github.com/vwtfafa/streamertools/issues"
+  },
   "license": "MIT",
   "icon": "assets/streamertools/icon.png",
   "environment": "*",
   "entrypoints": {
-    "fabric-datagen": [
-      "org.vwtfafa.streamertools.client.StreamerToolsModDataGenerator"
+    "main": [
+      "org.vwtfafa.streamertools.StreamerToolsMod"
     ],
     "client": [
       "org.vwtfafa.streamertools.client.StreamerToolsModClient"
     ],
-    "main": [
-      "org.vwtfafa.streamertools.StreamerToolsMod"
+    "modmenu": [
+      "org.vwtfafa.streamertools.client.gui.ModMenuIntegration"
     ]
   },
   "mixins": [
-    "streamertools.mixins.json",
-    {
-      "config": "streamertools.client.mixins.json",
-      "environment": "client"
-    }
+    "streamertools.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
-    "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "fabricloader": ">=0.17.3",
+    "fabric-api": "*",
+    "minecraft": "~1.21.8",
+    "java": ">=21",
+    "cloth-config": ">=15.0.0"
+  },
+  "suggests": {
+    "modmenu": ">=12.0.0"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/yourdiscord",
+        "modmenu.website": "https://github.com/vwtfafa/streamertools"
+      }
+    }
   }
 }
