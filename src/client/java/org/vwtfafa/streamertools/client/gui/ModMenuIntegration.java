@@ -2,6 +2,7 @@ package org.vwtfafa.streamertools.client.gui;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
+import net.minecraft.client.gui.screens.Screen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,7 +19,8 @@ public class ModMenuIntegration implements ModMenuApi {
         return parent -> {
             try {
                 LOGGER.info("Creating config screen");
-                return ConfigScreenFactory.createConfigScreen(parent);
+                // Create and return the config screen using our ConfigScreenFactory
+                return org.vwtfafa.streamertools.client.gui.ConfigScreenFactory.createConfigScreen(parent);
             } catch (Exception e) {
                 LOGGER.error("Failed to create config screen", e);
                 return parent;
