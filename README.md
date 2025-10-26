@@ -2,10 +2,11 @@
 
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 ![Version](https://img.shields.io/badge/Version-1.0.0-blue)
-![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-green)
-![Fabric](https://img.shields.io/badge/Fabric-Yes-orange)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.21.8-green)
+![Fabric](https://img.shields.io/badge/Fabric-0.136.0-orange)
+![Java](https://img.shields.io/badge/Java-21-blueviolet)
 
-Ein leistungsstarker Minecraft Fabric Mod, der Twitch-Chat direkt in dein Spiel integriert!
+Ein leistungsstarker Minecraft Fabric Mod, der Twitch-Chat direkt in dein Spiel integriert – sowohl im Einzelspieler als auch auf Servern!
 
 ## 🌟 Features
 
@@ -13,9 +14,10 @@ Ein leistungsstarker Minecraft Fabric Mod, der Twitch-Chat direkt in dein Spiel 
 - 🎮 **Live Twitch Chat im Spiel** - Sehe Chat-Nachrichten in Echtzeit
 - 🔐 **OAuth2 Authentifizierung** - Sichere Verbindung zu Twitch
 - ⚙️ **Vollständige Konfiguration** - Cloth Config Integration
-- 🎨 **Schönes Chat-Overlay** - Automatisches Fade-Out nach 10 Sekunden
+- 🎨 **Schönes Chat-Overlay** - Automatisches Fade-Out
 - 💬 **Chat-Befehle** - Verarbeite Befehle von Zuschauern
-- 🔔 **Server-Integration** - Funktioniert auf Multiplayer-Servern
+- 🌐 **Multiplayer** - 
+- 🚀 **Leistungsoptimiert** - Minimaler Einfluss auf die Spielleistung
 
 ### 🎯 Implementierte Features
 - ✅ Twitch Chat Integration (Twitch4J 1.19.0)
@@ -30,33 +32,49 @@ Ein leistungsstarker Minecraft Fabric Mod, der Twitch-Chat direkt in dein Spiel 
 ## 🚀 Schnellstart
 
 ### Voraussetzungen
-- Java 21 oder höher
-- Minecraft 1.20.1
-- Fabric Loader
+- Java 21 oder höher (empfohlen: OpenJDK 21)
+- Minecraft 1.21.8
+- Fabric Loader 0.17.3 oder höher
+- Fabric API 0.136.0 oder höher
 
 ### Installation
 
-1. **Projekt bauen**
-```bash
-gradle clean build
-```
+## 🚀 Installation
 
-2. **JAR installieren**
-   - Kopiere `build/libs/streamertools-1.0.0.jar` in dein `mods` Verzeichnis
+### 1. Mod herunterladen
+- Lade die neueste Version von [Releases](https://github.com/vwtfafa/streamertools-mc/releases)
+- Oder baue selbst:
+  ```bash
+  git clone https://github.com/vwtfafa/streamertools-mc.git
+  cd streamertools-mc
+  gradle clean build
+  ```
 
-3. **Twitch Token besorgen**
-   - Besuche: https://twitchtokengenerator.com/
-   - Kopiere deinen OAuth Token
+### 2. Installation
+- Kopiere `build/libs/streamertools-1.0.0.jar` in deinen `.minecraft/mods/` Ordner
+- Stelle sicher, dass Fabric Loader installiert ist
 
-4. **Mod konfigurieren**
-   - Starte Minecraft
-   - Drücke **P** um die Konfiguration zu öffnen
-   - Gib dein Twitch-Benutzername und Token ein
-   - Speichern
+### 3. Twitch Token einrichten
+1. Besuche [Twitch Token Generator](https://twitchtokengenerator.com/)
+2. Wähle "Custom Scope"
+3. Füge folgende Berechtigungen hinzu:
+   - `chat:read`
+   - `chat:edit`
+   - `channel:moderate`
+4. Kopiere den generierten OAuth Token
 
-5. **Fertig!** 🎉
-   - Starte einen Server
-   - Dein Twitch-Chat erscheint oben rechts
+### 4. Konfiguration
+1. Starte Minecraft mit dem Fabric Loader
+2. Drücke **P** um das Konfigurationsmenü zu öffnen
+3. Gehe zum Tab "Twitch Einstellungen"
+4. Aktiviere die Twitch-Integration
+5. Füge deinen Twitch-Benutzernamen und den OAuth Token ein
+6. Klicke auf "Speichern"
+
+### 5. Fertig! 🎉
+- Starte das Spiel neu
+- Der Twitch-Chat sollte nun oben rechts erscheinen
+- Im Einzelspieler und auf Servern verfügbar
 
 ## 📋 Befehle
 
@@ -78,26 +96,64 @@ gradle --refresh-dependencies
 gradle dependencies
 ```
 
-### Im-Spiel Keybindings
+## 🎮 Steuerung
+
+### Tastaturbefehle
 | Taste | Funktion |
 |-------|----------|
-| **P** | Konfiguration öffnen |
-| **Unbekannt** | Chat-Overlay umschalten |
+| **P** | Konfigurationsmenü öffnen |
+| **Umschalt + C** | Chat-Overlay ein-/ausblenden |
+| **R** | Chat-Overlay zurücksetzen |
 
-## 📁 Projektstruktur
+### Chat-Befehle
+| Befehl | Beschreibung |
+|--------|--------------|
+| `!hello` | Testbefehl |
+| `!follow` | Zeigt Follower-Informationen |
+| `!uptime` | Zeigt die aktuelle Streamzeit |
+
+## ⚙️ Konfiguration
+
+Die Mod verwendet Cloth Config für eine benutzerfreundliche Konfiguration:
+
+### Allgemein
+- **Chat-Position**: Anpassung der Position des Chat-Overlays
+- **Textgröße**: Größe des Chat-Textes
+- **Hintergrund-Transparenz**: Anpassung der Deckkraft des Hintergrunds
+
+### Twitch Einstellungen
+- **Twitch Benutzername**: Dein Twitch-Benutzername
+- **OAuth Token**: Dein persönlicher OAuth-Token
+- **Automatische Verbindung**: Automatische Verbindung beim Start
+- **Chat-Nachrichten anzeigen**: Zeigt Chat-Nachrichten an
+- **Befehle aktivieren**: Aktiviert die Verarbeitung von Chat-Befehlen
+
+## 🏗️ Projektstruktur
 
 ```
 streamertools/
 ├── src/
 │   ├── main/
 │   │   ├── java/org/vwtfafa/streamertools/
-│   │   │   ├── StreamerToolsMod.java
+│   │   │   ├── StreamerToolsMod.java          # Hauptmod-Klasse
+│   │   │   ├── client/
+│   │   │   │   ├── StreamerToolsModClient.java # Client-seitige Initialisierung
+│   │   │   │   └── gui/
+│   │   │   │       ├── ChatOverlay.java       # Chat-Overlay Rendering
+│   │   │   │       └── ConfigScreenFactory.java # Konfigurationsbildschirm
 │   │   │   ├── twitch/
-│   │   │   │   └── TwitchChatManager.java
+│   │   │   │   └── TwitchChatManager.java     # Twitch-Integration
 │   │   │   └── config/
-│   │   │       ├── ModConfig.java
-│   │   │       └── TwitchConfig.java
+│   │   │       ├── ModConfig.java             # Hauptkonfiguration
+│   │   │       └── TwitchConfig.java          # Twitch-spezifische Einstellungen
 │   │   └── resources/
+│   │       ├── fabric.mod.json                # Mod-Metadaten
+│   │       └── assets/streamertools/           # Assets (Texturen, Übersetzungen)
+│   └── client/                                # Client-spezifischer Code
+│       └── java/org/vwtfafa/streamertools/client/
+│           └── ...
+├── build.gradle                              # Build-Konfiguration
+└── README.md                                # Diese Datei
 │   │       └── fabric.mod.json
 │   └── client/
 │       └── java/org/vwtfafa/streamertools/client/
@@ -182,11 +238,57 @@ Alle **22 Bugs** wurden behoben! Siehe `BUG_FIXES.md` für Details:
 ## 🎯 Was kann der Mod?
 
 ### ✅ Implementiert
-- [x] Live Twitch Chat anzeigen
+## ✅ Features
+
+### 🔧 Kernfunktionen
+- [x] Live Twitch Chat im Spiel
 - [x] OAuth2 Authentifizierung
 - [x] Konfigurierbare Einstellungen
 - [x] Chat-Befehle verarbeiten
 - [x] Automatisches Fade-Out
+- [x] Einzelspieler-Unterstützung
+- [x] Multiplayer-Kompatibilität
+
+### 🎨 Benutzeroberfläche
+- [x] Anpassbares Chat-Overlay
+- [x] Intuitive Konfiguration
+- [x] Tastaturbefehle
+- [x] Responsive Design
+
+### ⚡ Leistung
+- [x] Effiziente Ressourcennutzung
+- [x] Thread-sichere Implementierung
+- [x] Automatische Wiederverbindung
+- [x] Fehlerbehandlung und Logging
+
+## 📝 Lizenz
+
+Dieses Projekt steht unter der MIT-Lizenz. Weitere Informationen finden Sie in der [LICENSE](LICENSE)-Datei.
+
+## 🤝 Mitwirken
+
+Beiträge sind willkommen! Bitte lesen Sie unsere [Beitragsrichtlinien](CONTRIBUTING.md) für weitere Informationen.
+
+## 📞 Unterstützung
+
+Fragen oder Probleme? Eröffnen Sie ein [Issue](https://github.com/vwtfafa/streamertools-mc/issues) oder besuchen Sie unseren [Discord-Server](https://discord.gg/h4uZv4Y3jd).
+
+## 📚 Weitere Ressourcen
+
+- [Twitch Developer Portal](https://dev.twitch.tv/)
+- [Fabric Wiki](https://fabricmc.net/wiki/start)
+- [Cloth Config Dokumentation](https://shedaniel.gitbook.io/cloth-config/)
+
+---
+
+<p align="center">
+  <a href="https://github.com/vwtfafa/streamertools-mc">
+    <img src="https://img.shields.io/github/stars/vwtfafa/streamertools-mc?style=social" alt="GitHub Stars">
+  </a>
+  <a href="https://discord.gg/h4uZv4Y3jd">
+    <img src="https://img.shields.io/discord/your-discord-server-id?label=Discord&logo=discord" alt="Discord">
+  </a>
+</p>
 - [x] Multiplayer-Support
 - [x] Fehlerbehandlung
 - [x] Ressourcen-Management
